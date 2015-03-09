@@ -146,7 +146,20 @@
     <ul id='attachments' class='inputs-list'>
       <%= render 'admin/content/attachment', { :attachment_num => 1, :hidden => false } -%>
     </ul>
-  </div>    
+  </div> 
+
+    <div class= 'merge'>
+    <h4><%= _("Merge Articles") %></h4>
+    <div class=''>
+      <input type="text" id="merge_articles" name="merge_with" value="<%=h params[:merge_with] %>" class='medium' />
+
+     <!--  <span id='preview_link'><%= link_to(_("Preview"), {:controller => '/articles', :action => 'preview', :id => @article.id}, {:target => 'new', :class => 'btn info'}) if @article.id %></span> -->
+
+      <%= submit_tag(_("Merge"), {:class => 'btn', :controller => '/admin/content', :action => 'edit', :id => @article.id}) %>
+      
+    </div>
+  </div>
+
   </div>
 
 </div>

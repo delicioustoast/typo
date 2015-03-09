@@ -71,6 +71,19 @@ class Article < Content
     end
   end
 
+  def merge_article(other_id)
+    other_article = Article.find_by_id(other_id)
+    merged_body = self.body + '\n' + other_article.body
+    self.body = merged_body
+    self.save!
+
+    other_comments_list = Comment.where('article_id == ?', other_article.id)
+    other_comments_list.each do |comment| 
+      comment.article_id = other_article.id
+      comment.save!
+    end
+  end
+
   def set_permalink
     return if self.state == 'draft'
     self.permalink = self.title.to_permalink if self.permalink.nil? or self.permalink.empty?
