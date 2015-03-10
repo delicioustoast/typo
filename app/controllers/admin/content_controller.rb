@@ -157,11 +157,11 @@ class Admin::ContentController < Admin::BaseController
       if params[:commit] == "Merge"
         other_article = Article.find_by_id(params[:merge_with])
         if other_article.nil?
-          redirect_to :action => 'index'
+          redirect_to :action => 'index' and return
         else
           @article.merge_article(params[:merge_with])
+          redirect_to :action => 'index' and return
         end
-        # redirect_to :action => 'index'
       end
     end
 

@@ -73,7 +73,7 @@ class Article < Content
 
   def merge_article(other_id)
     other_article = Article.find_by_id(other_id)
-    merged_body = self.body + '\n' + other_article.body
+    merged_body = self.body + other_article.body
     self.body = merged_body
     self.save!
 
