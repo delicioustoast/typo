@@ -77,8 +77,8 @@ class Article < Content
     self.body = merged_body
     self.save!
 
-    other_comments_list = Comment.where('article_id == ?', other_article.id)
-    other_comments_list.each do |comment| 
+    # other_comments_list = Comment.where('article_id == ?', other_article.id)
+    Comment.where('article_id == ?', other_article.id).find_each do |comment| 
       comment.article_id = other_article.id
       comment.save!
     end
