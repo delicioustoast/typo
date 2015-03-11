@@ -148,18 +148,16 @@
     </ul>
   </div> 
 
-  	<% if current_user.admin? %>
+  <% if current_user.admin? %>
     <div class= 'merge'>
     <h4><%= _("Merge Articles") %></h4>
-    <div class=''>
-      <input type="text" id="merge_with" name="merge_with" value="<%=h params[:merge_with] %>" class='medium' />
+	    <div class=''>
+	      <input type="text" id="merge_with" name="merge_with" value="<%=h params[:merge_with] %>" class='medium' />
 
-     <!--  <span id='preview_link'><%= link_to(_("Preview"), {:controller => '/articles', :action => 'preview', :id => @article.id}, {:target => 'new', :class => 'btn info'}) if @article.id %></span> -->
-
-      <%= submit_tag(_("Merge"), {:class => 'btn', :controller => '/admin/content', :action => 'edit', :id => @article.id}) %>
-      
-    </div>
-  </div>
+	      <%= submit_tag(_("Merge"), {:class => 'btn', :controller => '/admin/content', :action => 'edit', :id => @article.id}) %>
+	      
+	    </div>
+  	</div>
   <% end %>
 
   </div>

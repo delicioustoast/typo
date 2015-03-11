@@ -74,7 +74,7 @@ class Article < Content
   def merge_article(other_id)
     other_article = Article.find_by_id(other_id)
     if not other_article.body.nil?
-    	merged_body = self.body + other_article.body
+    	merged_body = self.body + "\n" +other_article.body
 	end
     self.body = merged_body
     self.save!
