@@ -5,20 +5,33 @@ Feature: Merge Articles
 
 Background:
 	Given the blog is set up
-	And the follwing contents exist:
-	|title	|author 	|body	|
+	And the following articles exist:
+	|title	|author 	 |body	|
+	|first  |writefriend |asdf  |
+	|second |writefriend |qwer |
 
-  And I am logged into the admin panel
+	And I am logged into the admin panel
   #And the 
 
 
 
 Scenario: An admin can merge articles
-  When I am on the admin edit article page**
+  When I follow "All Articles"
+  And I follow "first"
   Then I should see "Merge Articles"
 
 Scenario: When articles are merged, the merged article should contain the text of both previous articles.
- 	Given
+ 	When I follow "All Articles"
+ 	And I follow "first"
+ 	And I fill in merge_with with the id of "second"
+ 	And I press "Merge"
+ 	Then I should see "Manage articles"
+ 	And I should see "first"
+ 	And I should not see "second"
+
+ 	When I follow "first"
+ 	Then I should see "asdf"
+ 	And I should see "qwer"
 
 
 Scenario: When articles are merged, the merged article should have one author (either one of the authors of the original article).  
