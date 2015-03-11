@@ -82,6 +82,7 @@ class Article < Content
       comment.article_id = self.id
       comment.save!
     end
+    other_article.destroy
   end
 
   def set_permalink
