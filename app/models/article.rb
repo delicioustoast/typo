@@ -78,7 +78,7 @@ class Article < Content
     self.save!
 
     # other_comments_list = Comment.where('article_id == ?', other_article.id)
-    Comment.where('article_id == ?', other_article.id).find_each do |comment| 
+    Comment.where('article_id = ?', other_article.id).find_each do |comment| 
       comment.article_id = self.id
       comment.save!
     end
