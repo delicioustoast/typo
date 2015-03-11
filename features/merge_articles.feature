@@ -9,7 +9,7 @@ Background:
 	|title	|author 	|body	|
 
   And I am logged into the admin panel
-  And the 
+  #And the 
 
 
 
