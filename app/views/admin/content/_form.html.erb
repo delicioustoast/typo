@@ -156,11 +156,12 @@
     <h4><%= _("Merge Articles") %></h4>
     <% end %>
       <div class=''>
+      <% if current_user.admin? %>
         <input type="text" id="merge_with" name="merge_with" value="<%=h params[:merge_with] %>" class='medium' />
 
 
         <%= submit_tag(_("Merge"), {:class => 'btn', :controller => '/admin/content', :action => 'edit', :id => @article.id}) %>
-        
+        <% end %>
       </div>
     </div>
   
