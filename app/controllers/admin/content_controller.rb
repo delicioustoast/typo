@@ -156,7 +156,7 @@ class Admin::ContentController < Admin::BaseController
       end
       if not params[:merge_with] == ""
         other_article = Article.find_by_id(params[:merge_with])
-        if other_article.nil?
+        if other_article.nil? or not current_user.admin?
           redirect_to :action => 'index' and return
         else
           @article.merge_article(params[:merge_with])

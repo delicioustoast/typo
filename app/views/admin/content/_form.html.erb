@@ -152,7 +152,7 @@
 
   
     <div class= 'merge'>
-    <h4><%= _("Merge Articles") %></h4>
+    <h4><%= _("Merge Articles") if current_user.admin? %></h4>
       <div class=''>
         <input type="text" id="merge_with" name="merge_with" value="<%=h params[:merge_with] %>" class='medium' />
 
